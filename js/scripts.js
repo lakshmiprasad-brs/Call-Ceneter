@@ -23,3 +23,85 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    var form = document.getElementById('Createaccount');
+    form.addEventListener('click', function (event) {
+        // Validation for First Name
+        var firstName = document.getElementById('inputFirstName').value;
+        if (firstName.trim() === '') {
+            alert('Please enter your first name.');
+            event.preventDefault();
+            return false;
+        }
+        // Validation for Last Name
+        var lastName = document.getElementById('inputLastName').value;
+        if (lastName.trim() === '') {
+            alert('Please enter your last name.');
+            event.preventDefault();
+            return false;
+        }
+        // Validation for Email
+        var email = document.getElementById('inputEmail').value;
+        if (email.trim() === '' || !isValidEmail(email)) {
+            alert('Please enter a valid email address.');
+            event.preventDefault();
+            return false;
+        }
+        // Validation for Password
+        var password = document.getElementById('inputPassword').value;
+        var confirmPassword = document.getElementById('inputPasswordConfirm').value;
+        if (password.trim() === '') {
+            alert('Please enter a password.');
+            event.preventDefault();
+            return false;
+        }
+        if (password !== confirmPassword) {
+            alert('Passwords do not match.');
+            event.preventDefault();
+            return false;
+        }
+    });
+    function isValidEmail(email) {
+        // Simple email validation regex
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+});
+document.addEventListener('DOMContentLoaded', function () {
+    var loginForm = document.getElementById('login');
+    loginForm.addEventListener('click', function (event) {
+        // Validation for Email
+        var email = document.getElementById('inputEmail').value;
+        if (email.trim() === '' || !isValidEmail(email)) {
+            alert('Please enter a valid email address.');
+            event.preventDefault();
+            return false;
+        }
+        // Validation for Password
+            var password = document.getElementById('inputPassword').value;
+            
+            // Check if the password is empty
+            if (password.trim() === '') {
+                alert('Please enter a password.');
+                event.preventDefault();
+                return false;
+            }
+            
+            var specialCharacterRegex = /[!@#$%^&*(),.?":{}|<>]/;
+            if (!specialCharacterRegex.test(password)) {
+                alert('Password must contain at least one special character.');
+                event.preventDefault();
+                return false;
+            }
+            
+            
+        });
+        
+    function isValidEmail(email) {
+        // Simple email validation regex
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+}); 
+ 
